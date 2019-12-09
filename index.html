@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta charset="utf-8">
+	<title>Trumpet Scales</title>
+    </head>
+    <body>
+	<h1>Trumpet Scales</h1>
+	<div id="app">
+
+	    <select name="scale_type" v-model="scaleType">
+		<option v-for="item in scaleTypes" :value="item.value">
+		    {{item.name}}
+		</option>
+	    </select>
+
+	    <select name="key" v-model="key">
+		<option v-for="item in keys" :value="item.value">
+		    {{item.name.join(', ')}}
+		</option>
+	    </select>
+
+	    <ul>
+		<li v-for="item in items">
+		    <pistons-view :item="item"></pistons-view>
+		</li>		
+	    <ul>
+
+	</div>
+	
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+	<script src='app.js'></script>
+    </body>
+</html>
