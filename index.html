@@ -5,30 +5,50 @@
 	<title>Trumpet Scales</title>
     </head>
     <body>
-	<h1>Trumpet Scales</h1>
+	<h1> Scales</h1>
 	<div id="app">
 
-	    <select name="scale_type" v-model="scaleType">
-		<option v-for="item in scaleTypes" :value="item.value">
-		    {{item.name}}
-		</option>
-	    </select>
+	    <div>
+		<span>
+		    <select name="scale_type" v-model="scaleType">
+			<option v-for="item in scaleTypes" :value="item.value">
+			    {{item.name}}
+			</option>
+		    </select>
+		</span>
 
-	    <select name="key" v-model="key">
-		<option v-for="item in keys" :value="item.value">
-		    {{item.name.join(', ')}}
-		</option>
-	    </select>
+		<span :disabled="scaleType === 'chromatic'">
+		    <select name="tonalCenter" v-model="tonalCenter">
+			<option v-for="item in tonalCenters" :value="item">
+			    {{item}}
+			</option>
+		    </select>
+		</span>
 
-	    <ul>
-		<li v-for="item in items">
-		    <pistons-view :item="item"></pistons-view>
-		</li>		
-	    <ul>
+		<span>
+		    in Bb<input type="radio" name="base" v-model="base" :value="'Bb'">
+		    in C<input type="radio" name="base" v-model="base" :value="'C'">
+		</span>
+
+		<button v-on:click="getItems()">GO</button>
+	    </div>
+
+	    <div>
+		<ul>
+		    <li v-for="item in items">
+			<pistons-view :item="item" :base="base"></pistons-view>
+		    </li>		
+		</ul>
+
+		<div>
+		    {{base}}
+		</div>
+	    </div>
 
 	</div>
 	
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+	<script src='scales.js'></script>	
 	<script src='app.js'></script>
     </body>
 </html>
