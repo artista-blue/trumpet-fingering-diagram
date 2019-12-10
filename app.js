@@ -54,5 +54,8 @@ const app =  new Vue({
 	base: function () {
 	    this.getItems();
 	}
+    },
+    mounted () {
+	this.getItems();
     }
 });

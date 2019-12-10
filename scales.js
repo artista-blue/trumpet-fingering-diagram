@@ -274,22 +274,40 @@ class Pistons {
     }
 }
 
-class ChromaticScale {
-    static get () {
-	return Pistons.items
-    }
-}
-
-class MajorScale {
-    static get intervals () {
-	return [0, 2, 4, 5, 7, 9, 11];
-    }
-    static get (tonalCenter, base) {
-	const notes = Keys.getScaleNotes(tonalCenter, MajorScale.intervals);
+class AbstractScale {
+    get (tonalCenter, base) {
+	const notes = Keys.getScaleNotes(tonalCenter, this.intervals);
 	const items = Pistons.items.filter(function (item) {
 	    return Scales.contains(item, notes, base);
 	});
 	return items;
+    }
+
+}
+class ChromaticScale {
+    get () {
+	return Pistons.items
+    }
+}
+
+class MajorScale extends AbstractScale {
+    constructor () {
+	super();
+	this.intervals = [0, 2, 4, 5, 7, 9, 11];
+    }
+}
+
+class AlteredScale extends AbstractScale {
+    constructor () {
+	super();
+	this.intervals = [0, 1, 3, 4, 6, 8, 10];
+    }
+}
+
+class SymmetricDiminishedScale extends AbstractScale {
+    constructor () {
+	super();
+	this.intervals = [0, 1, 3, 4, 6, 7, 9, 10];
     }
 }
 
@@ -303,7 +321,15 @@ class Scales {
 	    {
 		value: 'major',
 		name: 'Major Scale'
-	    }
+	    },
+	    {
+		value: 'altered',
+		name: 'Altered Scale'
+	    },
+	    {
+		value: 'diminished',
+		name: 'Symmetric Diminished Scale'
+	    },
 	];
     }
 
@@ -321,10 +347,14 @@ class Scales {
 
     static get(scaleType, tonalCenter, base) {
 	switch (scaleType) {
-	case 'major':
-	    return MajorScale.get(tonalCenter, base);
 	case 'chromatic':
-	    return ChromaticScale.get();
+	    return new ChromaticScale().get();
+	case 'major':
+	    return new MajorScale().get(tonalCenter, base);
+	case 'altered':
+	    return new AlteredScale().get(tonalCenter, base);
+	case 'diminished':
+	    return new SymmetricDiminishedScale().get(tonalCenter, base);
 	default:
 	    throw new Error(`scale NOT supported: ${scaleType}`);
 	}
