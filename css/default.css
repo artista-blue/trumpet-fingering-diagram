@@ -1,0 +1,35 @@
+.note {
+    font-size:150%;
+    background-color:#7fffd4;
+    display:inline-block;
+    width:100px;
+    text-align:center;
+    padding:0px;
+    margin:2px;
+    border-radius:10px;
+}
+
+.piston-on {
+    font-size:150%;
+    text-align:center;    
+    display: inline-block;
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    border-color:black;
+    line-height:30px;
+    background:skyblue;
+    border: solid 3px black;
+}
+.piston-off {
+    font-size:150%;
+    text-align:center;    
+    display: inline-block;
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    border-color:black;
+    line-height:30px;
+    background:white;
+    border: solid 3px black;
+}

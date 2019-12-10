@@ -3,6 +3,7 @@
     <head>
 	<meta charset="utf-8">
 	<title>Trumpet Scales</title>
+	<link rel="stylesheet" href="./css/default.css" type="text/css">
     </head>
     <body>
 	<h1> Scales</h1>
@@ -29,20 +30,14 @@
 		    in Bb<input type="radio" name="base" v-model="base" :value="'Bb'">
 		    in C<input type="radio" name="base" v-model="base" :value="'C'">
 		</span>
-
-		<button v-on:click="getItems()">GO</button>
 	    </div>
 
 	    <div>
-		<ul>
+		<ul style="list-style:none">
 		    <li v-for="item in items">
 			<pistons-view :item="item" :base="base"></pistons-view>
 		    </li>		
 		</ul>
-
-		<div>
-		    {{base}}
-		</div>
 	    </div>
 
 	</div>
