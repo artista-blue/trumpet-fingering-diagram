@@ -77,6 +77,17 @@ class Keys {
 	});
 	return items;
     }
+
+    static shift (key, step) {
+	const notes = Keys.items.map(x => {
+	    const index = x.name.length - 1;
+	    return x.name[index];
+	});
+	const keyIndex = notes.indexOf(key);
+	const index = (keyIndex + step + 12) % 12;
+	const shifted = notes[index];
+	return shifted;
+    }
 }
 
 class Pistons {

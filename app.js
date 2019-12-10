@@ -31,7 +31,7 @@ const app =  new Vue({
 	items: [],
 	c_major_items: null,
 	scaleTypes: Scales.SCALE_TYPES,
-	scaleType: Scales.SCALE_TYPES[0].value,
+	scaleType: Scales.SCALE_TYPES[1].value,
 	tonalCenters: Keys.getTonalCenters(),
 	tonalCenter: Keys.getTonalCenters()[0],
 	base: 'C'
@@ -51,7 +51,12 @@ const app =  new Vue({
 	tonalCenter: function () {
 	    this.getItems();
 	},
-	base: function () {
+	base: function (nv, ov) {
+	    if (nv === 'Bb' && ov === 'C') {
+		this.tonalCenter = Keys.shift(ov, +2);
+	    } else if (nv === 'C' && ov === 'Bb') {
+		this.tonalCenter = Keys.shift(nv, -2);
+	    }
 	    this.getItems();
 	}
     },
