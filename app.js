@@ -2,8 +2,7 @@ Vue.component('piston-view', {
     props: ['index', 'state'],
     template: `
       <span v-if="state===true" class="piston-on">{{index}}</span>
-      <span v-else class="piston-off">-</span>
-`
+      <span v-else class="piston-off">-</span>`
 });
 
 Vue.component('pistons-view', {
@@ -23,29 +22,18 @@ Vue.component('pistons-view', {
           <piston-view :index="1" :state="item.pistons[0]"></piston-view>
           <piston-view :index="2" :state="item.pistons[1]"></piston-view>
           <piston-view :index="3" :state="item.pistons[2]"></piston-view>
-      </div>
-`
+      </div>`
 });
-
 
 const app =  new Vue({
     el: '#app',
     data: {
 	items: [],
 	c_major_items: null,
-	scaleTypes: [
-	    {
-		value: 'chromatic',
-		name: 'Chromatic'
-	    },
-	    {
-		value: 'major',
-		name: 'Major Scale'
-	    }
-	],
-	scaleType: null,
+	scaleTypes: Scales.SCALE_TYPES,
+	scaleType: Scales.SCALE_TYPES[0].value,
 	tonalCenters: Keys.getTonalCenters(),
-	tonalCenter: null,
+	tonalCenter: Keys.getTonalCenters()[0],
 	base: 'C'
     },
     methods: {
@@ -55,6 +43,9 @@ const app =  new Vue({
     },
     watch: {
 	scaleType: function () {
+	    if (this.scaleType !== 'chromatic' && !this.tonalCenter) {
+		this.tonalCenter = this.tonalCenters[0]; // default tonal center
+	    }
 	    this.getItems();
 	},
 	tonalCenter: function () {

@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="./css/default.css" type="text/css">
     </head>
     <body>
-	<h1> Scales</h1>
+	<h1>Trumpet Scales</h1>
 	<div id="app">
 
 	    <div>
@@ -18,8 +18,8 @@
 		    </select>
 		</span>
 
-		<span :disabled="scaleType === 'chromatic'">
-		    <select name="tonalCenter" v-model="tonalCenter">
+		<span>
+		    <select name="tonalCenter" v-model="tonalCenter" :disabled="scaleType === 'chromatic'">
 			<option v-for="item in tonalCenters" :value="item">
 			    {{item}}
 			</option>

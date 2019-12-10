@@ -294,6 +294,19 @@ class MajorScale {
 }
 
 class Scales {
+    static get SCALE_TYPES () {
+	return [
+	    {
+		value: 'chromatic',
+		name: 'Chromatic'
+	    },
+	    {
+		value: 'major',
+		name: 'Major Scale'
+	    }
+	];
+    }
+
     static contains (item, notes, base) {
 	const names = base === 'C' ? item.realNames : item.names;
 	for (const name of names) {
