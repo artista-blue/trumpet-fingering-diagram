@@ -1,4 +1,4 @@
-# rumpet-fingering-diagram
+# trumpet-fingering-diagram
 
 Fingering diagram for trumpet.
 
