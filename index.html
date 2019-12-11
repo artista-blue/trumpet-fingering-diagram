@@ -2,6 +2,7 @@
 <html>
     <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 	<title>Trumpet Scales</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -10,34 +11,33 @@
     <body>
 	<h1>Trumpet Scales</h1>
 	<div id="app">
-	    <div class="row">
-		<span class="col-md-3">
+	    <div class="row" style="margin:10px;">
+		<span class="form-check col-md-3">
+		    <span class="col-md-5">
+			<input type="radio" id="label-Bb" name="base" v-model="base" :value="'Bb'" class="form-check-input">
+			<label for="label-Bb" class="form-check-label">in Bb</label>
+		    </span>
+		    <span class="col-md-5">
+			<input type="radio" id="label-C"  name="base" v-model="base" :value="'C'" class="form-check-input">
+			<label for="label-C" class="form-check-label">in C</label>
+		    </span>
+		</span>
+	    </div>
+	    
+	    <div class="row" style="margin:10px;">
+		<span class="col-md-3" style="margin:0px;padding:0px;">
 		    <select name="scale_type" v-model="scaleType" class="custom-select">
 			<option v-for="item in scaleTypes" :value="item.value">
 			    {{item.name}}
 			</option>
 		    </select>
 		</span>
-
-		<span class="col-md-1">
+		<span class="col-md-2" style="margin:0px;padding:0px;">
 		    <select name="tonalCenter" v-model="tonalCenter" :disabled="scaleType === 'chromatic'" class="custom-select">
 			<option v-for="item in tonalCenters" :value="item">
 			    {{item}}
 			</option>
 		    </select>
-		</span>
-
-		<span class="form-check col-md-3" style="margin-left:10px;">
-		    <span class="row">
-			<span class="col-md-3">
-			    <input type="radio" id="label-Bb" name="base" v-model="base" :value="'Bb'" class="form-check-input">
-			    <label for="label-Bb" class="form-check-label">in Bb</label>
-			</span>
-			<span class="col-md-3">
-			    <input type="radio" id="label-C"  name="base" v-model="base" :value="'C'" class="form-check-input">
-			    <label for="label-C" class="form-check-label">in C</label>
-			</span>
-		    </span>
 		</span>
 	    </div>
 
