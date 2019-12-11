@@ -53,9 +53,9 @@ const app =  new Vue({
 	},
 	base: function (nv, ov) {
 	    if (nv === 'Bb' && ov === 'C') {
-		this.tonalCenter = Keys.shift(ov, +2);
+		this.tonalCenter = Keys.shift(this.tonalCenter, +2);
 	    } else if (nv === 'C' && ov === 'Bb') {
-		this.tonalCenter = Keys.shift(nv, -2);
+		this.tonalCenter = Keys.shift(this.tonalCenter, -2);
 	    }
 	    this.getItems();
 	}
