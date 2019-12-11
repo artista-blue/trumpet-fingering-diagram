@@ -11,16 +11,14 @@
 	<h1>Trumpet Scales</h1>
 	<div id="app">
 	    <div class="row" style="margin:10px;">
-		<span class="form-check col-md-3" style="margin-left:10px;">
-		    <span class="row">
-			<span class="col-md-3">
-			    <input type="radio" id="label-Bb" name="base" v-model="base" :value="'Bb'" class="form-check-input">
-			    <label for="label-Bb" class="form-check-label">in Bb</label>
-			</span>
-			<span class="col-md-3">
-			    <input type="radio" id="label-C"  name="base" v-model="base" :value="'C'" class="form-check-input">
-			    <label for="label-C" class="form-check-label">in C</label>
-			</span>
+		<span class="form-check col-md-3">
+		    <span class="col-md-5">
+			<input type="radio" id="label-Bb" name="base" v-model="base" :value="'Bb'" class="form-check-input">
+			<label for="label-Bb" class="form-check-label">in Bb</label>
+		    </span>
+		    <span class="col-md-5">
+			<input type="radio" id="label-C"  name="base" v-model="base" :value="'C'" class="form-check-input">
+			<label for="label-C" class="form-check-label">in C</label>
 		    </span>
 		</span>
 	    </div>
