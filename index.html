@@ -3,36 +3,45 @@
     <head>
 	<meta charset="utf-8">
 	<title>Trumpet Scales</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="./css/default.css" type="text/css">
     </head>
     <body>
 	<h1>Trumpet Scales</h1>
 	<div id="app">
-
-	    <div>
-		<span>
-		    <select name="scale_type" v-model="scaleType">
+	    <div class="row">
+		<span class="col-md-3">
+		    <select name="scale_type" v-model="scaleType" class="custom-select">
 			<option v-for="item in scaleTypes" :value="item.value">
 			    {{item.name}}
 			</option>
 		    </select>
 		</span>
 
-		<span>
-		    <select name="tonalCenter" v-model="tonalCenter" :disabled="scaleType === 'chromatic'">
+		<span class="col-md-1">
+		    <select name="tonalCenter" v-model="tonalCenter" :disabled="scaleType === 'chromatic'" class="custom-select">
 			<option v-for="item in tonalCenters" :value="item">
 			    {{item}}
 			</option>
 		    </select>
 		</span>
 
-		<span>
-		    in Bb<input type="radio" name="base" v-model="base" :value="'Bb'">
-		    in C<input type="radio" name="base" v-model="base" :value="'C'">
+		<span class="form-check col-md-3" style="margin-left:10px;">
+		    <span class="row">
+			<span class="col-md-3">
+			    <input type="radio" id="label-Bb" name="base" v-model="base" :value="'Bb'" class="form-check-input">
+			    <label for="label-Bb" class="form-check-label">in Bb</label>
+			</span>
+			<span class="col-md-3">
+			    <input type="radio" id="label-C"  name="base" v-model="base" :value="'C'" class="form-check-input">
+			    <label for="label-C" class="form-check-label">in C</label>
+			</span>
+		    </span>
 		</span>
 	    </div>
 
-	    <div>
+	    <div style="margin-top:10px;">
 		<ul style="list-style:none">
 		    <li v-for="item in items">
 			<pistons-view :item="item" :base="base"></pistons-view>

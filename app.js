@@ -8,7 +8,7 @@ Vue.component('piston-view', {
 Vue.component('pistons-view', {
     props: ['item', 'base'],
     template: `
-      <div>
+      <div style="height:40px;">
           <span class="note">
               <span v-if="base === 'C'">
                   <span>{{item.realNames[1] || item.realNames[0]}}</span>
@@ -19,9 +19,11 @@ Vue.component('pistons-view', {
                   <span> {{item.pitch}}</span>
               </span>
           </span>
-          <piston-view :index="1" :state="item.pistons[0]"></piston-view>
-          <piston-view :index="2" :state="item.pistons[1]"></piston-view>
-          <piston-view :index="3" :state="item.pistons[2]"></piston-view>
+          <span style="vertical-align:bottom">
+              <piston-view :index="1" :state="item.pistons[0]"></piston-view>
+              <piston-view :index="2" :state="item.pistons[1]"></piston-view>
+              <piston-view :index="3" :state="item.pistons[2]"></piston-view>
+          </span>
       </div>`
 });
 
