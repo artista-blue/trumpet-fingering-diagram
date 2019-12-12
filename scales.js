@@ -135,14 +135,6 @@ class TrumpetFingerings {
 		"pistons": [false, false, false]
 	    }
 	];
-	/**
-	// append note
-	const noteMap = Notes.ID_NOTE_MAP;
-	for (const item of items) {
-	    item.note = noteMap[item.id];
-	}
-	console.log(items);
-	*/
 	return items;
     }
 }

@@ -83,6 +83,11 @@ class Notes {
 	return items;
     }
 
+    static shiftNote (note, step) {
+	let shiftedId = note.id + step;
+	return Notes.NOTES[shiftedId];
+    }
+
     static shift (key, step) {
 	const tonalCenters = Notes.getTonalCenters();
 	const keyIndex = tonalCenters.indexOf(key);

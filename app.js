@@ -10,14 +10,7 @@ Vue.component('pistons-view', {
     template: `
       <div style="height:40px;">
           <span class="note">
-              <span v-if="base === 'C'">
-                  <span>{{item.names[0] || item.names[1]}}</span>
-                  <span>{{item.octave}}</span>
-              </span>
-              <span v-else>
-                  <span>{{Notes.shift(item.names[0], 2) || Notes.shift(item.names[1], 2)}}</span>
-                  <span> {{item.octave}}</span>
-              </span>
+              <span>{{item.displayName}}</span>
           </span>
           <span style="vertical-align:bottom">
               <piston-view :index="1" :state="item.pistons[0]"></piston-view>
@@ -49,6 +42,16 @@ const app =  new Vue({
 		    continue;
 		}
 		scaleNote.pistons = fingering.pistons;
+		const step = this.base == 'C' ? 0 : 2;
+		const shiftedNote = Notes.shiftNote(scaleNote, step);
+		let shiftedNoteName;
+		if (shiftedNote.names.length === 2 &&
+		    ['G', 'D', 'A', 'E', 'B'].includes(this.tonalCenter)) {
+		    shiftedNoteName = shiftedNote.names[1];
+		} else {
+		    shiftedNoteName = shiftedNote.names[0];
+		}
+		scaleNote.displayName = shiftedNoteName + shiftedNote.octave;
 	    }
 	    const tpScaleNotes = scaleNotes.filter(x => { return x.pistons });
 	    this.items = tpScaleNotes;
