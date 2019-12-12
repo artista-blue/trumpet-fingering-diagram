@@ -181,7 +181,7 @@ class Pistons {
 	    },
 	    {
 		"names": ["B"],
-		"pitch": 5,
+		"pitch": 4,
 		"pistons": [false, true, false]
 	    },
 	    {
@@ -277,7 +277,7 @@ class Pistons {
 	    item.realNames = namesList[realIndex];
 	    index = (index + 1) % 12;
 	    realIndex = (realIndex + 1) % 12;
-	    if (['Bb', 'B'].includes(item.realNames[0])) {
+	    if (['A#', 'B'].includes(item.realNames[0])) {
 		item.pitch = item.pitch - 1;
 	    }
 	}
