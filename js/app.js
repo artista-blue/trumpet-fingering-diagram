@@ -5,18 +5,28 @@ Vue.component('piston-view', {
       <span v-else class="piston-off">-</span>`
 });
 
-Vue.component('pistons-view', {
+Vue.component('fingering-view', {
+    props: ['fingering'],
+    template: `
+      <span class="fingering-view">
+          <piston-view :index="1" :state="fingering.p1"></piston-view>
+          <piston-view :index="2" :state="fingering.p2"></piston-view>
+          <piston-view :index="3" :state="fingering.p3"></piston-view>
+      </span>`
+});
+
+Vue.component('fingerings-view', {
     props: ['item', 'base'],
     template: `
-      <div style="height:40px;">
-          <span class="note">
+      <div>
+          <div class="note">
               <span>{{item.displayName}}</span>
-          </span>
-          <span style="vertical-align:bottom">
-              <piston-view :index="1" :state="item.pistons[0]"></piston-view>
-              <piston-view :index="2" :state="item.pistons[1]"></piston-view>
-              <piston-view :index="3" :state="item.pistons[2]"></piston-view>
-          </span>
+          </div>
+          <div class="row" style="padding-left:0px;">
+              <span v-for="fingering in item.fingerings">
+                  <fingering-view :fingering="fingering"></fingeirng-view>
+              </span>
+          </div>
       </div>`
 });
 
@@ -41,7 +51,7 @@ const app =  new Vue({
 		if (!fingering) {
 		    continue;
 		}
-		scaleNote.pistons = fingering.pistons;
+		scaleNote.fingerings = fingering.fingerings;
 		const step = this.base == 'C' ? 0 : 2;
 		const shiftedNote = Notes.shiftNote(scaleNote, step);
 		let shiftedNoteName;
@@ -53,7 +63,7 @@ const app =  new Vue({
 		}
 		scaleNote.displayName = shiftedNoteName + shiftedNote.octave;
 	    }
-	    const tpScaleNotes = scaleNotes.filter(x => { return x.pistons });
+	    const tpScaleNotes = scaleNotes.filter(x => { return x.fingerings });
 	    this.items = tpScaleNotes;
 	}
     },

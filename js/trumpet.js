@@ -1,3 +1,11 @@
+class Fingering {
+    constructor (p1, p2, p3) {
+	this.p1 = p1
+	this.p2 = p2
+	this.p3 = p3
+    }
+}
+
 class TrumpetFingerings {
 
     static get ID_FINGERING_MAP () {
@@ -12,127 +20,200 @@ class TrumpetFingerings {
 	const items = [
 	    {
 		"id": 31,
-		"pistons": [true, true, true]
+		"fingerings": [
+		    new Fingering(true, true, true)
+		]
 	    },
 	    {
 		"id": 32,
-		"pistons": [true, false, true]
+		"fingerings": [
+		    new Fingering(true, false, true)
+		]
 	    },
 	    {
 		"id": 33,
-		"pistons": [false, true, true]
+		"fingerings": [
+		    new Fingering(false, true, true)
+		]
 	    },
 	    {
 		"id": 34,
-		"pistons": [true, true, false]
+		"fingerings": [
+		    new Fingering(true, true, false),
+		    new Fingering(false, false, true)
+		]
 	    },
 	    {
 		"id": 35,
-		"pistons": [true, false, false]
+		"fingerings": [
+		    new Fingering(true, false, false)
+		]
 	    },
 	    {
 		"id": 36,
-		"pistons": [false, true, false]
+		"fingerings": [
+		    new Fingering(false, true, false)
+		]
 	    },
 	    {
 		"id": 37,
-		"pistons": [false, false, false]  // C in Bb score
+		"fingerings": [
+		    new Fingering(false, false, false)
+		]  // C in Bb score
 	    },
 	    {
 		"id": 38,
-		"pistons": [true, true, true]
+		"fingerings": [
+		    new Fingering(true, true, true)
+		]
 	    },
 	    {
 		"id": 39,
-		"pistons": [true, false, true]  // C4 in concert key
+		"fingerings": [
+		    new Fingering(true, false, true)
+		]  // C4 in concert key
 	    },
 	    {
 		"id": 40,
-		"pistons": [false, true, true]
+		"fingerings": [
+		    new Fingering(false, true, true)
+		]
 	    },
 	    {
 		"id": 41,
-		"pistons": [true, true, false]
+		"fingerings": [
+		    new Fingering(true, true, false),
+		    new Fingering(false, false, true)
+		]
 	    },
 	    {
 		"id": 42,
-		"pistons": [true, false, false]
+		"fingerings": [
+		    new Fingering(true, false, false)
+		]
 	    },	
 	    {
 		"id": 43,
-		"pistons": [false, true, false]
+		"fingerings": [
+		    new Fingering(false, true, false)
+		]
 	    },
 	    {
 		"id": 44,
-		"pistons": [false, false, false]
+		"fingerings": [
+		    new Fingering(false, false, false),
+		    new Fingering(true, false, true)
+		]
 	    },
 	    {
 		"id": 45,
-		"pistons": [false, true, true]
+		"fingerings": [
+		    new Fingering(false, true, true)
+		]
 	    },
 	    {
 		"id": 46,
-		"pistons": [true, true, false]
+		"fingerings": [
+		    new Fingering(true, true, false),
+		    new Fingering(false, false, true)
+		]
 	    },
 	    {
 		"id": 47,
-		"pistons": [true, false, false]
+		"fingerings": [
+		    new Fingering(true, false, false)
+		]
 	    },
 	    {
 		"id": 48,
-		"pistons": [false, true, false]
+		"fingerings": [
+		    new Fingering(false, true, false)
+		]
 	    },
 	    {
 		"id": 49,
-		"pistons": [false, false, false]
+		"fingerings": [
+		    new Fingering(false, false, false),
+		    new Fingering(false, true, true)
+		]
 	    },
 	    {
 		"id": 50,
-		"pistons": [true, true, false]
+		"fingerings": [
+		    new Fingering(true, true, false)
+		]
 	    },
 	    {
 		"id": 51,
-		"pistons": [true, false, false]
+		"fingerings": [
+		    new Fingering(true, false, false),
+		    new Fingering(true, false, true)
+		]
 	    },
 	    {
 		"id": 52,
-		"pistons": [false, true, false]
+		"fingerings": [
+		    new Fingering(false, true, false),
+		    new Fingering(false, true, true)
+		]
 	    },
 	    {
 		"id": 53,
-		"pistons": [false, false, false]
+		"fingerings": [
+		    new Fingering(false, false, false),
+		    new Fingering(true, true, false),
+		    new Fingering(false, false, true)
+		]
 	    },
 	    {
 		"id": 54,
-		"pistons": [true, false, false]
+		"fingerings": [
+		    new Fingering(true, false, false)
+		]
 	    },	
 	    {
 		"id": 55,
-		"pistons": [false, true, false]
+		"fingerings": [
+		    new Fingering(false, true, false)
+		]
 	    },
 	    {
 		"id": 56,
-		"pistons": [false, false, false]
+		"fingerings": [
+		    new Fingering(false, false, false),
+		    new Fingering(true, false, true)
+		]
 	    },
 	    {
 		"id": 57,
-		"pistons": [false, true, true]
+		"fingerings": [
+		    new Fingering(false, true, true)
+		]
 	    },
 	    {
 		"id": 58,
-		"pistons": [true, true, false]
+		"fingerings": [
+		    new Fingering(true, true, false),
+		    new Fingering(false, false, true)
+		]
 	    },
 	    {
 		"id": 59,
-		"pistons": [true, false, false]
+		"fingerings": [
+		    new Fingering(true, false, false)
+		]
 	    },
 	    {
 		"id": 60,
-		"pistons": [false, true, false]
+		"fingerings": [
+		    new Fingering(false, true, false)
+		]
 	    },
 	    {
 		"id": 61,
-		"pistons": [false, false, false]
+		"fingerings": [
+		    new Fingering(false, false, false)
+		]
 	    }
 	];
 	return items;
