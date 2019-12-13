@@ -10,14 +10,7 @@ Vue.component('pistons-view', {
     template: `
       <div style="height:40px;">
           <span class="note">
-              <span v-if="base === 'C'">
-                  <span>{{item.realNames[1] || item.realNames[0]}}</span>
-                  <span>{{item.pitch}}</span>
-              </span>
-              <span v-else>
-                  <span>{{item.names[1] || item.names[0]}}</span>
-                  <span> {{item.pitch}}</span>
-              </span>
+              <span>{{item.displayName}}</span>
           </span>
           <span style="vertical-align:bottom">
               <piston-view :index="1" :state="item.pistons[0]"></piston-view>
@@ -34,13 +27,34 @@ const app =  new Vue({
 	c_major_items: null,
 	scaleTypes: Scales.SCALE_TYPES,
 	scaleType: Scales.SCALE_TYPES[1].value,
-	tonalCenters: Keys.getTonalCenters(),
-	tonalCenter: Keys.getTonalCenters()[0],
+	tonalCenters: Notes.getTonalCenters(),
+	tonalCenter: Notes.getTonalCenters()[0],
 	base: 'C'
     },
     methods: {
 	getItems: function () {
-	    this.items = Scales.get(this.scaleType, this.tonalCenter, this.base);
+	    const shiftedTonalCenter = this.base === 'C' ? this.tonalCenter : Notes.shift(this.tonalCenter, -2);
+	    const scaleNotes = Scales.get(this.scaleType, shiftedTonalCenter);
+	    const fingeringMap =  TrumpetFingerings.ID_FINGERING_MAP;
+	    for (const scaleNote of scaleNotes) {
+		const fingering =fingeringMap[scaleNote.id];
+		if (!fingering) {
+		    continue;
+		}
+		scaleNote.pistons = fingering.pistons;
+		const step = this.base == 'C' ? 0 : 2;
+		const shiftedNote = Notes.shiftNote(scaleNote, step);
+		let shiftedNoteName;
+		if (shiftedNote.names.length === 2 &&
+		    ['G', 'D', 'A', 'E', 'B'].includes(this.tonalCenter)) {
+		    shiftedNoteName = shiftedNote.names[1];
+		} else {
+		    shiftedNoteName = shiftedNote.names[0];
+		}
+		scaleNote.displayName = shiftedNoteName + shiftedNote.octave;
+	    }
+	    const tpScaleNotes = scaleNotes.filter(x => { return x.pistons });
+	    this.items = tpScaleNotes;
 	}
     },
     watch: {
@@ -55,9 +69,9 @@ const app =  new Vue({
 	},
 	base: function (nv, ov) {
 	    if (nv === 'Bb' && ov === 'C') {
-		this.tonalCenter = Keys.shift(this.tonalCenter, +2);
+		this.tonalCenter = Notes.shift(this.tonalCenter, +2);
 	    } else if (nv === 'C' && ov === 'Bb') {
-		this.tonalCenter = Keys.shift(this.tonalCenter, -2);
+		this.tonalCenter = Notes.shift(this.tonalCenter, -2);
 	    }
 	    this.getItems();
 	}
