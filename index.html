@@ -41,10 +41,12 @@
 		</span>
 	    </div>
 
-	    <div style="margin-top:10px;">
-		<ul style="list-style:none">
+	    <div class="container-fluid" style="margin-top:10px; padding-left:0px;">
+		<ul style="list-style:none; padding-left:0px;">
 		    <li v-for="item in items">
-			<pistons-view :item="item" :base="base"></pistons-view>
+			<span style="display:inline-block">
+			    <fingerings-view :item="item" :base="base"></fingerings-view>
+			</span>
 		    </li>		
 		</ul>
 	    </div>
@@ -52,7 +54,8 @@
 	</div>
 	
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
-	<script src='scales.js'></script>	
-	<script src='app.js'></script>
+	<script src="js/music-theory.js"></script>
+	<script src="js/trumpet.js"></script>	
+	<script src="js/app.js"></script>
     </body>
 </html>
