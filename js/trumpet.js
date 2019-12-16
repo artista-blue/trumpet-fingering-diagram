@@ -219,3 +219,10 @@ class TrumpetFingerings {
 	return items;
     }
 }
+
+if (!this.window) {
+    module.exports = {
+	Fingering: Fingering,
+	TrumpetFingerings: TrumpetFingerings
+    };
+}
