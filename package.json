@@ -1,0 +1,31 @@
+{
+  "name": "trumpet-figering",
+  "version": "1.0.0",
+  "description": "trumpet fingering diagram",
+  "main": "js/app.js",
+  "dependencies": {
+    "artista-music-theory": "^0.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artista-blue/trumpet-fingering-diagram.git"
+  },
+  "keywords": [
+    "trumpet",
+    "fingering",
+    "diagram",
+    "music",
+    "theory",
+    "scale"
+  ],
+  "author": "Takayoshi Aoyagi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/artista-blue/trumpet-fingering-diagram/issues"
+  },
+  "homepage": "https://github.com/artista-blue/trumpet-fingering-diagram#readme"
+}
