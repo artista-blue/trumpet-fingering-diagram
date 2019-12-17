@@ -152,12 +152,19 @@ class SymmetricDiminishedScale extends AbstractScale {
     }
 }
 
+class WholeToneScale extends AbstractScale {
+    constructor () {
+	super();
+	this.intervals = [0, 2, 4, 6, 8, 10];
+    }
+}
+
 class Scales {
     static get SCALE_TYPES () {
 	return [
 	    {
 		value: 'chromatic',
-		name: 'Chromatic'
+		name: 'Chromatic Scale'
 	    },
 	    {
 		value: 'major',
@@ -171,6 +178,10 @@ class Scales {
 		value: 'diminished',
 		name: 'Symmetric Diminished Scale'
 	    },
+	    {
+		value: 'wholetone',
+		name: 'Whole Tone Scale'
+	    }
 	];
     }
 
@@ -184,6 +195,8 @@ class Scales {
 	    return new AlteredScale().get(tonalCenter);
 	case 'diminished':
 	    return new SymmetricDiminishedScale().get(tonalCenter);
+	case 'wholetone':
+	    return new WholeToneScale().get(tonalCenter);
 	default:
 	    throw new Error(`scale NOT supported: ${scaleType}`);
 	}
