@@ -1,10 +1,10 @@
 {
   "name": "trumpet-figering-diagram",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "trumpet fingering diagram",
   "main": "js/app.js",
   "dependencies": {
-    "artista-music-theory": "^0.0.3"
+    "artista-music-theory": "^0.0.4"
   },
   "devDependencies": {},
   "scripts": {
