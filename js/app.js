@@ -19,14 +19,14 @@ Vue.component('fingerings-view', {
     props: ['item', 'base'],
     template: `
       <div>
-          <div class="note">
+          <span class="note">
               <span>{{item.displayName}}</span>
-          </div>
-          <div class="row" style="padding-left:0px;">
+          </span>
+          <span style="padding-left:0px;">
               <span v-for="fingering in item.fingerings">
                   <fingering-view :fingering="fingering"></fingeirng-view>
               </span>
-          </div>
+          </span>
       </div>`
 });
 
